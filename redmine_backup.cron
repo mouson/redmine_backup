@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+DOM="`date +%d`";
+DOW="`date +%a`";
+TYPE="d";
+
+if   [ "X${DOM}" == "X01"  ]; then TYPE="m";
+elif [ "X${DOW}" == "XSun" ]; then TYPE="w";
+fi;
+
+$BACKUP ${TYPE} > /dev/null 2>&1
+
+exit 0;
