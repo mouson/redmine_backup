@@ -2,18 +2,18 @@
 
 DAY=`date +"%Y%m%d"`
 HOUR=`date +"%H%M"`
-RHOST="176.9.76.2"
+RHOST="1.1.1.1"
 SSH_KEY="/home/dssupport/.ssh/id_rsa"
-SSH_USR="dssupport"
+SSH_USR="user"
 SSH="ssh -o BatchMode=yes -i ${SSH_KEY}"
 SCP="scp -r -i ${SSH_KEY}"
 SSH_TEST_FILE="ssh_test.txt"
-BACKUP_PATH="/home/dssupport/redmine"
+BACKUP_PATH="/backup/path"
 REDMINE_HOME="/var/www/redmine"
 REMOTE_BACKUP_PATH="/home/backup/redmine"
 REDMINE_DB_NAME="redmine"
-REDMINE_DB_USER="poker"
-REDMINE_DB_PASS="kNxio0xNgeff6z"
+REDMINE_DB_USER="user"
+REDMINE_DB_PASS="password"
 REDMINE_DB_BACKUP="$REDMINE_HOME/redmine_mysql_db.sql"
 REDMINE_BACKUP_NAME="redmine.tar.gz"
 REDMINE_BACKUP_DIR_NAME_DAY="redmine_"$DAY"_"$HOUR"_day"
