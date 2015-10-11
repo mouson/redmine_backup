@@ -1,0 +1,27 @@
+DAY=`date +"%Y%m%d"`
+HOUR=`date +"%H%M"`
+RHOST="1.1.1.1"
+SSH_KEY="/home/user/.ssh/id_rsa"
+SSH_USR="user"
+SSH="ssh -o BatchMode=yes -i ${SSH_KEY}"
+SCP="scp -r -i ${SSH_KEY}"
+SSH_TEST_FILE="ssh_test.txt"
+BACKUP_PATH="/backup/path"
+REDMINE_HOME="/var/www/redmine"
+REMOTE_BACKUP_PATH="/home/backup/redmine"
+REDMINE_DB_NAME="redmine"
+REDMINE_DB_USER="user"
+REDMINE_DB_PASS="password"
+REDMINE_DB_BACKUP="$REDMINE_HOME/redmine_mysql_db.sql"
+REDMINE_BACKUP_NAME="redmine.tar.gz"
+REDMINE_BACKUP_DIR_NAME_DAY="redmine_"$DAY"_"$HOUR"_day"
+REDMINE_BACKUP_DIR_NAME_WEEK="redmine_"$DAY"_"$HOUR"_week"
+REDMINE_BACKUP_DIR_NAME_MONTH="redmine_"$DAY"_"$HOUR"_month"
+REDMINE_BACKUP_SHASUM_NAME="redmine.tar.gz.sha256sum"
+REDMINE_BACKUP_LIVE_DAY=1
+REDMINE_BACKUP_LIVE_WEEK=14
+REDMINE_BACKUP_LIVE_MONTH=60
+MODEL_BKP_DAY="redmine_*_day.tar.gz"
+MODEL_BKP_WEEK="redmine_*_week.tar.gz"
+MODEL_BKP_MONTH="redmine_*_month.tar.gz"
+COUNT=0
