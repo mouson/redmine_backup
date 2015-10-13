@@ -31,8 +31,8 @@ backup ()
 	sha256sum "$REDMINE_BACKUP_NAME" > "$REDMINE_BACKUP_SHASUM_NAME"
 	tar -czvf ../"$REDMINE_BACKUP_DIR_NAME_${TYPE}".tar.gz redmine*
     cd "$BACKUP_PATH" || exit 1
-	$SCP "$REDMINE_BACKUP_DIR_NAME_${TYPE}".tar.gz "$SSH_USR"@"$RHOST":/"$REMOTE_BACKUP_PATH"
-    $SCP current_sum.sh "$SSH_USR"@"$RHOST":/"$REMOTE_BACKUP_PATH"
+	$SCP "$REDMINE_BACKUP_DIR_NAME_${TYPE}".tar.gz "$SSH_USR"@"$RHOST":"$REMOTE_BACKUP_PATH"
+    $SCP current_sum.sh "$SSH_USR"@"$RHOST":"$REMOTE_BACKUP_PATH"
 	XCMD=sh "$REMOTE_BACKUP_PATH"/current_sum.sh
     $SSH "$SSH_USR"@"$RHOST" "$XCMD"
 	if [ $? -eq 0 ]; then
@@ -72,7 +72,7 @@ fi
 
 check_remote_sums ()
 {
-    $SCP checksum.sh "$SSH_USR"@"$RHOST":/"$REMOTE_BACKUP_PATH"
+    $SCP checksum.sh "$SSH_USR"@"$RHOST":"$REMOTE_BACKUP_PATH"
 	XCMD=sh "$REMOTE_BACKUP_PATH"/checksum.sh
 	$SSH "$SSH_USR"@"$RHOST" "$XCMD"
     if [ $? -eq 0 ]; then
@@ -88,11 +88,11 @@ if [ $# -ne 1 ]; then
 	use_message
 else
 	if [ "$1" == d ]; then
-		TYPE=DAY
+		TYPE=day
 	elif [ "$1" == w ]; then
-		TYPE=WEEK
+		TYPE=week
 	elif [ "$1" == m ]; then
-		TYPE=MONTH
+		TYPE=month
 	fi
 	check_ssh
 	remove_old $TYPE
