@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-DAY=`date +"%Y%m%d"`
+DAY=$(date +"%Y%m%d")
 BACKUP_PATH="/home/backup/redmine"
 
-cd $BACKUP_PATH && tar -xf redmine_${DAY}_*_day.tar.gz
-CMD = `sha265sum -c ls *.sha256sum |  awk '{print($2)}'`
-if [ $CMD == "FAILED"]; then
-    rm redmine.tar*
-    exit 1
-else
+cd ${BACKUP_PATH} && find . -name "redmine_${DAY}_*_day.tgz" -exec tar -xf {} \; 
+SUM=$(sha256sum -c redmine.tar.gz.sha256sum | awk '{print($2)}')
+if [ "$SUM" == "OK" ]; then
     exit 0
+else
+    exit 1
+fi
