@@ -2,10 +2,10 @@
 
 BACKUP_PATH="/home/backup/redmine"
 
-cd ${BACKUP_PATH}
+cd ${BACKUP_PATH} || exit 1
 for i in *.tgz
 do
-    tar -xf $i
+    tar -xf "$i"
     if [ -f "redmine.tar.gz.sha256sum" ]; then
         SUM=$(sha256sum -c redmine.tar.gz.sha256sum |  awk '{print($2)}')
         if [ "$SUM" == "OK" ]; then
