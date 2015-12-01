@@ -33,21 +33,8 @@ backup ()
 	tar -czf ../"${REDMINE_BACKUP_DIR_NAME_}${TYPE}".tgz redmine* || exit 1
 	cd "${BACKUP_PATH}" || exit 1
 	${SCP} "${REDMINE_BACKUP_DIR_NAME_}${TYPE}".tgz "${SSH_USR}"@"${RHOST}":"${REMOTE_BACKUP_PATH}"
-    ${SCP} "${SCRIPT_DIR}"/current_sum.sh "${SSH_USR}"@"${RHOST}":"${REMOTE_BACKUP_PATH}"
-    ${SSH} "${SSH_USR}"@"${RHOST}" "bash ${REMOTE_BACKUP_PATH}/current_sum.sh"
-	if [[ $? -eq 0 ]]; then
-        	${SSH} "${SSH_USR}"@"${RHOST}" "rm ${REMOTE_BACKUP_PATH}/current_sum.sh && rm ${REMOTE_BACKUP_PATH}/redmine{.tar.*,_mysql_*}"
-        	rm -rf "${BACKUP_PATH:?}/"*
-        	echo "Check current archive chechsum done"
-	else
-        echo "Check current archive chechsum filed"
-		while [[ $COUNT -ne 3 ]]; do
-			${SSH} "${SSH_USR}"@"${RHOST}" "rm ${REMOTE_BACKUP_PATH}/${REDMINE_BACKUP_DIR_NAME_}${TYPE}.tgz"
-			rm -rf "${REDMINE_BACKUP_DIR_NAME_}${TYPE}"
-			COUNT=$($COUNT + 1)
-			backup
-		done
-    fi
+    rm -rf "${BACKUP_PATH:?}/"*
+    echo "Check current archive chechsum done"
     echo "(${REDMINE_BACKUP_DIR_NAME_}${TYPE}) done."
 }
 
