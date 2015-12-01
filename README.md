@@ -5,6 +5,7 @@ modify from https://github.com/KsenZ/redmine_backup
 # Usage
 
 1) git clone git@github.com:mouson/redmine_backup.git
+
 2) Copy conf.sh.sample to conf.sh
 
 ~~~sh
@@ -12,6 +13,7 @@ cp conf.sh.sample conf.sh
 ~~~
 
 3) modify config file "conf.sh"
+
 4) testing
 
 ~~~sh
