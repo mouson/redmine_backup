@@ -1,19 +1,27 @@
 DAY=$(date +"%Y%m%d")
 HOUR=$(date +"%H%M")
+# remote backup server ip address
 RHOST="1.2.3.4"
+# SSH Connect Setting
 SSH_KEY="/home/backup/.ssh/id_rsa"
 SSH_USR="backup"
 SSH="ssh -o BatchMode=yes -i ${SSH_KEY}"
 SCP="scp -r -i ${SSH_KEY}"
 SSH_TEST_FILE="ssh_test.txt"
+# this script real path
 SCRIPT_DIR="/home/backup/redmine_backup"
+# backup file temp path
 BACKUP_PATH="/home/backup/redmine"
+# which folder will backup. ex: opt/redmine/files
 REDMINE_HOME="/var/www"
+# remote backup file path
 REMOTE_BACKUP_PATH="/home/backup/redmine"
+# redmine database setting
 REDMINE_DB_NAME="redmine"
 REDMINE_DB_USER="redmine"
 REDMINE_DB_PASS="password"
 REDMINE_DB_BACKUP="redmine_mysql_db.sql"
+# backup file name setting
 REDMINE_BACKUP_NAME="redmine.tar.gz"
 REDMINE_BACKUP_DIR_NAME_="redmine_"${DAY}"_"${HOUR}"_"
 REDMINE_BACKUP_SHASUM_NAME="redmine.tar.gz.sha256sum"
