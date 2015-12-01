@@ -2,11 +2,11 @@
 
 BACKUP="$HOME/redmine_backup/redmine_backup.sh"
 DOM=$(date +%d);
-DOW=$(date +%a);
+DOW=$(date +%u);
 TYPE="d";
 
 if   [ "${DOM}" == "01"  ]; then TYPE="m";
-elif [ "${DOW}" == "Sun" ]; then TYPE="w";
+elif [ "${DOW}" == "7" ]; then TYPE="w";
 fi;
 
 $BACKUP ${TYPE} > /dev/null 2>&1
