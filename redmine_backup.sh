@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+BASEPATH=`dirname "${BASH_SOURCE[0]}"`
 
-source conf.sh
+source ${BASEPATH}/conf.sh
 
 use_message ()
 {
