@@ -17,6 +17,8 @@ REDMINE_HOME="/var/www"
 # remote backup file path
 REMOTE_BACKUP_PATH="/home/backup/redmine"
 # redmine database setting
+REDMINE_DB_HOST="127.0.0.1"
+REDMINE_DB_CHARACTER="utf8mb4"
 REDMINE_DB_NAME="redmine"
 REDMINE_DB_USER="redmine"
 REDMINE_DB_PASS="password"

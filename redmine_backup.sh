@@ -16,7 +16,7 @@ use_message ()
 mysql_backup ()
 {
 	echo "Snapshot backuping Redmine's MySQL db into Redmine instance..."
-	mysqldump --user="${REDMINE_DB_USER}" --password="${REDMINE_DB_PASS}" "${REDMINE_DB_NAME}" > "${BACKUP_PATH}"/"${REDMINE_DB_BACKUP}"
+	mysqldump --host="${REDMINE_DB_HOST}" --user="${REDMINE_DB_USER}" --password=${REDMINE_DB_PASS} --default-character-set=${REDMINE_DB_CHARACTER} "${REDMINE_DB_NAME}" > "${BACKUP_PATH}"/"${REDMINE_DB_BACKUP}"
 	echo "($REDMINE_DB_BACKUP) done."
 	echo
 }
